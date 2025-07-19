@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+
+<section class="card fade-in">
+  <h2>Contact Me</h2>
+  <form class="contact-form" method="POST" action="/contact">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit" class="btn">Send Message</button>
+</form>
+
+
+  <h3>Or reach me at:</h3>
+  <ul>
+    <li><strong>Email:</strong> <a href="mailto:karthicksaravanan0703@gmail.com">karthicksaravanan0703@gmail.com</a></li>
+    <li><strong>Phone:</strong> <a href="tel:+917358618044">+91 73586 18044</a></li>
+    <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/karthick-saravanan-90b343296" target="_blank">My Profile</a></li>
+  </ul>
+</section>
+<script>
+document.querySelector(".contact-form").addEventListener("submit", function(e) {
+  const email = document.querySelector("input[name='email']").value;
+  const regex = /^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$/;
+  if (!regex.test(email)) {
+    alert("Please enter a valid email address.");
+    e.preventDefault();
+  }
+});
+</script>
+
+
+<%- include("partials/footer") %>

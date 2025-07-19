@@ -1,0 +1,42 @@
+<%- include("partials/header") %>
+
+<section class="card fade-in">
+  <h2>Research & Paper Presentations</h2>
+
+  <div class="project-card">
+    <h3>📊 Predicting Start-up Success using Decision Tree</h3>
+    <p><strong>Overview:</strong> This research aimed to analyze startup success using a Decision Tree model to provide better transparency in decision-making for investors and entrepreneurs.</p>
+    <p><strong>Methodology:</strong> We gathered historical startup datasets, including variables like sector, funding amount, team size, location, and founder background. The Decision Tree classifier was trained to identify patterns that distinguish successful startups from failed ones.</p>
+    <p><strong>Key Insights:</strong></p>
+    <ul>
+      <li>Funding stage and market type were strong indicators of success.</li>
+      <li>Startups with experienced founders and well-balanced teams had higher survival rates.</li>
+      <li>The model achieved 84.3% classification accuracy on test data.</li>
+    </ul>
+    <p><strong>Tools Used:</strong> Python, Pandas, Scikit-learn, Matplotlib</p>
+    <p><strong>Conclusion:</strong> The Decision Tree model enabled data-driven decisions for startup funding with clear interpretability and key factor identification.</p>
+  </div>
+
+  <div class="project-card">
+    <h3>🔐 Enhancing IoT Intrusion Detection using Artificial Neural Networks (ANN)</h3>
+    <p><strong>Objective:</strong> To significantly improve the detection accuracy of network intrusions in IoT systems by leveraging Artificial Neural Networks over classical algorithms like Decision Trees, SVM, KNN, and Random Forest.</p>
+    <p><strong>Problem Statement:</strong> IoT devices are resource-constrained and generate high-dimensional, noisy data. Classical algorithms struggle with adaptability, high false positives, and poor generalization.</p>
+    <p><strong>Methodology:</strong></p>
+    <ul>
+      <li>Used real-world datasets collected via Wireshark to simulate IoT network traffic.</li>
+      <li>Designed multiple ANN models and optimized them using backpropagation and dropout layers to prevent overfitting.</li>
+      <li>Conducted comparative evaluation using t-tests and accuracy benchmarks.</li>
+    </ul>
+    <p><strong>Performance Results:</strong></p>
+    <ul>
+      <li>ANN outperformed Decision Tree (96.49% vs 86.79%)</li>
+      <li>ANN surpassed Random Forest (96.49% vs 89.94%)</li>
+      <li>ANN exceeded SVM and KNN by over 10%</li>
+    </ul>
+    <p><strong>Conclusion:</strong> ANN demonstrated statistically superior accuracy (p < 0.05), scalability, and robustness. It provides a practical, future-proof solution for securing smart IoT networks.</p>
+    <p><strong>Tools & References:</strong> Python, TensorFlow, Keras, Wireshark | Studies: Khan et al. (2024), Verma et al. (2023), Sharma et al. (2025)</p>
+  </div>
+
+</section>
+
+<%- include("partials/footer") %>
