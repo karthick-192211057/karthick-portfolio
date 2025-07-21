@@ -1,4 +1,4 @@
-// Dark Mode Toggle
+// Theme toggle
 function toggleTheme() {
   const body = document.body;
   const isDark = body.classList.toggle("dark-mode");
@@ -11,28 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("dark-mode");
   }
 
-  // Scroll header hide/show
-  let lastScrollTop = 0;
+  // Header scroll logic
+  let lastScroll = 0;
   const header = document.querySelector("header");
 
   window.addEventListener("scroll", () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let currentScroll = window.pageYOffset;
 
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      // Scroll down
-      header.style.top = "-100px";
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // scrolling down
+      header.style.top = "-80px";
     } else {
-      // Scroll up
+      // scrolling up
       header.style.top = "0";
     }
 
-    // Add shadow if scrolled
-    if (scrollTop > 50) {
+    // Add shadow when scrolling
+    if (currentScroll > 10) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
 
-    lastScrollTop = scrollTop;
+    lastScroll = currentScroll;
   });
 });

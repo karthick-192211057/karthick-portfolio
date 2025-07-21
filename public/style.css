@@ -330,23 +330,27 @@ nav {
   --card-bg: #f9f9f9;
 }
 
-/* Header Sticky and Animated Scroll */
 header {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  height: 60px;
   background-color: var(--primary);
-  transition: top 0.4s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s;
-  z-index: 1000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  transition: top 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+  z-index: 999;
 }
 
-/* Add shadow when scrolling */
 header.scrolled {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  background-color: #0d47a1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Space below fixed header */
 main {
-  margin-top: 80px;
+  margin-top: 70px; /* ensures space for fixed header */
 }
+
