@@ -20,16 +20,20 @@ body {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: var(--primary);
   color: white;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
+  transition: top 0.3s ease-in-out;
   z-index: 1000;
 }
+
 
 nav a {
   margin-left: 20px;
@@ -45,9 +49,12 @@ nav a:hover {
 
 main {
   padding: 2rem;
-  max-width: 1100px;
-  margin: auto;
+  margin-top: 80px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 h1, h2, h3 {
   color: var(--primary);
@@ -224,10 +231,6 @@ footer {
   nav {
     flex-direction: column;
     gap: 10px;
-  }
-
-  main {
-    padding: 1rem;
   }
 
   .card,
