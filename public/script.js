@@ -1,32 +1,38 @@
-// Dark Mode Toggle Script
+// Dark Mode Toggle
 function toggleTheme() {
   const body = document.body;
   const isDark = body.classList.toggle("dark-mode");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// Apply theme on load
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
   }
-});
 
-// Scroll-based Header Visibility
-let lastScrollTop = 0;
-const header = document.querySelector("header");
+  // Scroll header hide/show
+  let lastScrollTop = 0;
+  const header = document.querySelector("header");
 
-window.addEventListener("scroll", () => {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
-    // scrolling down
-    header.style.top = "-80px"; // hide
-  } else {
-    // scrolling up
-    header.style.top = "0"; // show
-  }
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      // Scroll down
+      header.style.top = "-100px";
+    } else {
+      // Scroll up
+      header.style.top = "0";
+    }
 
-  lastScrollTop = scrollTop;
+    // Add shadow if scrolled
+    if (scrollTop > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+    lastScrollTop = scrollTop;
+  });
 });

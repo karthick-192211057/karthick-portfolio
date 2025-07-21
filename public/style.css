@@ -329,3 +329,24 @@ nav {
   --accent: #4fc3f7;
   --card-bg: #f9f9f9;
 }
+
+/* Header Sticky and Animated Scroll */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--primary);
+  transition: top 0.4s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s;
+  z-index: 1000;
+}
+
+/* Add shadow when scrolling */
+header.scrolled {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #0d47a1;
+}
+
+/* Space below fixed header */
+main {
+  margin-top: 80px;
+}
