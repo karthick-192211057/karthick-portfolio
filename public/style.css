@@ -1,23 +1,26 @@
 :root {
-  --bg: #f0f4f8;
-  --text: #1e1e2f;
+  --bg: #f5f7fa;
+  --text: #1e1e1e;
   --primary: #0d47a1;
   --accent: #64b5f6;
   --card-bg: #ffffff;
-  --highlight: #ffca28;
+  --gradient: linear-gradient(135deg, #2196f3, #21cbf3);
 }
 
 .dark-mode {
   --bg: #121212;
-  --text: #f1f1f1;
-  --card-bg: #1e1e1e;
+  --text: #eeeeee;
+  --card-bg: #1f1f1f;
 }
 
 body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  transition: background 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
+
 
 header {
   position: fixed;
@@ -354,3 +357,73 @@ main {
   margin-top: 70px; /* ensures space for fixed header */
 }
 
+/* Header styling */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 1000;
+  color: white;
+  transition: top 0.4s ease;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+
+nav.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+}
+
+/* Hamburger for mobile */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  nav.nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--primary);
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+
+  nav.nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

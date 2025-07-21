@@ -4,6 +4,10 @@ function toggleTheme() {
   const isDark = body.classList.toggle("dark-mode");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
