@@ -548,3 +548,64 @@ footer {
   }
 }
 
+/* Sidebar Menu */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  transition: left 0.3s ease-in-out;
+  z-index: 1001;
+}
+
+.sidebar.show {
+  left: 0; /* Only appears when class "show" is added */
+}
+
+.sidebar .close-btn {
+  font-size: 28px;
+  margin-bottom: 1rem;
+  text-align: right;
+  cursor: pointer;
+}
+
+/* Desktop nav */
+.desktop-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  border: 2px solid white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Show sidebar toggle only on small screens */
+@media screen and (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar a {
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+}
