@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Karthick S | Portfolio</title>
-  <link rel="stylesheet" href="/style.css">
-  <script defer src="/script.js"></script>
-</head>
-<body>
- <header>
+<header>
   <div class="logo">Karthick S</div>
-  <nav class="nav-links" id="navLinks">
+  <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+  <nav class="nav-bar desktop-nav">
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/projects">Projects</a>
@@ -18,8 +9,15 @@
     <a href="/contact">Contact</a>
     <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
   </nav>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
 </header>
 
-
-  <main>
+<!-- Sidebar for mobile -->
+<aside class="sidebar" id="sidebar">
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">×</a>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/projects">Projects</a>
+  <a href="/research">Research</a>
+  <a href="/contact">Contact</a>
+  <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
+</aside>

@@ -8,6 +8,11 @@ function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("show");
 }
 
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("show");
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
