@@ -1,22 +1,23 @@
-// Theme toggle
+// 🌗 Theme toggle and save
 function toggleTheme() {
   const isDark = document.body.classList.toggle("dark-mode");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// Load theme from localStorage
-window.addEventListener("DOMContentLoaded", () => {
+// Load saved theme and attach sidebar handlers
+document.addEventListener("DOMContentLoaded", () => {
+  // Load saved theme
   const theme = localStorage.getItem("theme");
   if (theme === "dark") {
     document.body.classList.add("dark-mode");
   }
 
   // Header scroll hide/show
-  let lastScroll = 0;
   const header = document.getElementById("main-header");
+  let lastScroll = 0;
   if (header) {
     window.addEventListener("scroll", () => {
-      let currentScroll = window.scrollY;
+      const currentScroll = window.scrollY;
       if (currentScroll > lastScroll && currentScroll > 100) {
         header.style.top = "-80px";
       } else {
@@ -43,10 +44,12 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Close sidebar on navigation
-  document.querySelectorAll("#mobile-sidebar a").forEach(link => {
-    link.addEventListener("click", () => {
-      sidebar.classList.remove("show");
+  // Close sidebar after clicking link
+  if (sidebar) {
+    sidebar.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.classList.remove("show");
+      });
     });
-  });
+  }
 });
