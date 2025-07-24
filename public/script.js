@@ -4,31 +4,49 @@ function toggleTheme() {
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// Sidebar toggle
-function toggleSidebar() {
-  const sidebar = document.getElementById("mobile-sidebar");
-  sidebar.classList.toggle("show");
-}
-
-// Auto-hide/show header on scroll
-let lastScroll = 0;
-window.addEventListener("scroll", () => {
-  const header = document.getElementById("main-header");
-  const currentScroll = window.scrollY;
-  if (currentScroll > lastScroll) {
-    header.style.top = "-70px"; // Hide on scroll down
-  } else {
-    header.style.top = "0"; // Show on scroll up
+// Load theme from localStorage
+window.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
   }
-  lastScroll = currentScroll;
-});
 
-// Load saved theme and close sidebar on page load
-window.onload = () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+  // Header scroll hide/show
+  let lastScroll = 0;
+  const header = document.getElementById("main-header");
+  if (header) {
+    window.addEventListener("scroll", () => {
+      let currentScroll = window.scrollY;
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.style.top = "-80px";
+      } else {
+        header.style.top = "0";
+      }
+      lastScroll = currentScroll;
+    });
+  }
 
-  // Hide sidebar in every page on load
+  // Sidebar toggle
+  const menuBtn = document.getElementById("menu-toggle");
   const sidebar = document.getElementById("mobile-sidebar");
-  if (sidebar) sidebar.classList.remove("show");
-};
+  const closeBtn = document.getElementById("sidebar-close");
+
+  if (menuBtn && sidebar) {
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+  }
+
+  if (closeBtn && sidebar) {
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+    });
+  }
+
+  // Close sidebar on navigation
+  document.querySelectorAll("#mobile-sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+    });
+  });
+});

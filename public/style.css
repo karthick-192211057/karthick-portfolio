@@ -11,12 +11,12 @@
 .dark-mode {
   --bg: #0d1117;
   --text: #e6edf3;
-  --card-bg: #161b22;
   --primary: #0a84ff;
   --accent: #1fb6ff;
+  --card-bg: #161b22;
 }
 
-/* 🌍 GLOBAL */
+/* 🌍 GLOBAL STYLES */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -33,49 +33,13 @@ main {
   margin-right: auto;
 }
 
-/* 🔠 TEXT */
 h1, h2, h3 {
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
+
 p {
   margin-bottom: 1rem;
-}
-
-/* 🧱 CARD */
-.card, .project-card, .feature-card {
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-/* 🎯 BUTTONS */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background: var(--accent);
-}
-
-/* 🌙 DARK MODE TOGGLE */
-.toggle-btn {
-  cursor: pointer;
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: 500;
 }
 
 /* 📌 HEADER */
@@ -92,82 +56,81 @@ header {
   justify-content: space-between;
   padding: 0 1.2rem;
   z-index: 1000;
-  transition: top 0.4s ease, box-shadow 0.3s ease-in-out;
+  transition: top 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 header.scrolled {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* 📄 LOGO */
+/* LOGO */
 .logo {
   font-weight: bold;
   font-size: 1.2rem;
   color: white;
 }
 
-/* 🧭 NAV LINKS */
-nav.nav-links {
+/* 🌙 TOGGLE BUTTON */
+.toggle-btn, .menu-toggle {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 🖥️ DESKTOP NAV */
+.desktop-nav {
   display: flex;
   gap: 20px;
-  align-items: center;
 }
-nav.nav-links a {
+.desktop-nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
 }
-nav.nav-links a:hover {
+.desktop-nav a:hover {
   color: var(--accent);
 }
 
-/* ☰ MENU TOGGLE (Mobile only) */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-/* 📱 SIDEBAR (MOBILE NAV) */
+/* 📱 SIDEBAR (Mobile) */
 .sidebar {
   position: fixed;
-  left: -250px;
+  left: -100%;
   top: 0;
   width: 250px;
-  height: 100%;
-  background: rgba(0, 51, 102, 0.95);
-  backdrop-filter: blur(5px);
-  color: white;
+  height: 100vh;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease;
   z-index: 1001;
 }
+
 .sidebar.show {
   left: 0;
 }
-.sidebar a {
-  color: white;
-  margin: 12px 0;
-  font-weight: bold;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+
 .sidebar .close-btn {
-  font-size: 30px;
+  font-size: 24px;
   text-align: right;
-  margin-bottom: 1rem;
   cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
 }
 
-/* 📷 HERO SECTION */
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ✨ HERO SECTION */
 .hero-section {
   text-align: center;
   padding: 4rem 2rem;
@@ -176,6 +139,7 @@ nav.nav-links a:hover {
   border-radius: 0 0 20px 20px;
 }
 
+/* HERO BUTTONS */
 .hero-buttons {
   display: flex;
   flex-direction: column;
@@ -200,7 +164,7 @@ nav.nav-links a:hover {
   }
 }
 
-/* 🛠 SKILLS */
+/* 🧠 SKILLS */
 .skills-grid, .tech-grid {
   display: flex;
   flex-wrap: wrap;
@@ -214,22 +178,21 @@ nav.nav-links a:hover {
   font-weight: bold;
 }
 
-/* 🧩 PROJECTS */
+/* 🧩 PROJECT CARDS */
 .project-card {
   background: var(--card-bg);
+  border-left: 6px solid var(--primary);
   padding: 1.5rem;
   margin: 1.5rem 0;
-  border-left: 6px solid var(--primary);
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
 }
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 .project-card h3 {
-  font-size: 1.6rem;
-  margin-top: 0;
+  font-size: 1.5rem;
   color: var(--primary);
 }
 .project-card p {
@@ -248,13 +211,12 @@ nav.nav-links a:hover {
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
 }
 .contact-form button {
   width: 100%;
 }
 
-/* 💬 QUOTE SECTION */
+/* 📝 QUOTE */
 .quote blockquote {
   font-style: italic;
   text-align: center;
@@ -265,7 +227,7 @@ nav.nav-links a:hover {
   border-radius: 8px;
 }
 
-/* 🧑‍💻 FOOTER */
+/* 🦶 FOOTER */
 footer {
   text-align: center;
   padding: 1rem;
@@ -274,7 +236,7 @@ footer {
   margin-top: 3rem;
 }
 
-/* 📱 RESPONSIVE */
+/* 📱 MOBILE RESPONSIVE */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
@@ -282,330 +244,26 @@ footer {
   .menu-toggle {
     display: inline-block;
   }
-
-  .contact-form {
-    flex-direction: column;
-    gap: 1rem;
+  .sidebar {
+    width: 80%;
   }
-
+  .btn {
+    width: 100%;
+  }
   h1, h2 {
     font-size: 1.5rem;
     text-align: center;
   }
-
-  nav.nav-links {
-    display: none;
-  }
-
-  nav.nav-links.show {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav.nav-links a {
-    font-size: 1rem;
-    padding: 0.6rem;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-  }
-
-  .btn {
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  nav {
-    gap: 5px;
-  }
-}
-:root {
-  --bg: #fdfdfd;
-  --text: #1a1a1a;
-  --primary: #003366;
-  --accent: #00bcd4;
-  --card-bg: #ffffff;
-  --gradient: linear-gradient(135deg, #003366, #00bcd4);
-}
-
-.dark-mode {
-  --bg: #0d1117;
-  --text: #e6edf3;
-  --card-bg: #161b22;
-  --primary: #0a84ff;
-  --accent: #1fb6ff;
-}
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: all 0.3s ease;
-}
-
-main {
-  margin-top: 70px;
-  padding: 2rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h1, h2, h3 {
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-p {
-  margin-bottom: 1rem;
-}
-
-/* Header */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: var(--primary);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  transition: top 0.4s ease-in-out, box-shadow 0.3s;
-  z-index: 1000;
-}
-header.scrolled {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-}
-
-.logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-/* Desktop Nav */
-.desktop-nav {
-  display: flex;
-  gap: 20px;
-}
-.desktop-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
-.desktop-nav a:hover {
-  color: var(--accent);
-}
-
-/* Mobile Menu Button */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: 2px solid white;
-  padding: 5px 10px;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Sidebar Navigation */
-.sidebar {
-  position: fixed;
-  left: -250px; /* ✅ This hides it */
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: var(--primary);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  transition: left 0.3s ease;
-  z-index: 1001;
-}
-
-.sidebar.show {
-  left: 0;
-}
-.sidebar .close-btn {
-  font-size: 24px;
-  text-align: right;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-.sidebar a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  font-weight: 600;
-}
-
-/* Card Style */
-.card, .project-card {
-  background: var(--card-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-}
-.project-card h3 {
-  font-size: 1.4rem;
-  margin-top: 0;
-}
-.project-card ul {
-  padding-left: 1.5rem;
-  margin: 0.5rem 0 1rem;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s;
-  font-weight: 600;
-}
-.btn:hover {
-  background: var(--accent);
-}
-
-/* Contact Form */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-.contact-form button {
-  width: 100%;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: var(--primary);
-  color: white;
-  margin-top: 3rem;
-}
-
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .btn {
-    width: 100%;
-  }
   main {
     padding: 1rem;
   }
-  h1, h2 {
-    font-size: 1.4rem;
-    text-align: center;
-  }
-  .project-card {
-    padding: 1rem;
-  }
-  .sidebar {
-    width: 80%;
-  }
 }
 
-/* Extra Small Devices */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.2rem;
   }
   h2 {
     font-size: 1rem;
-  }
-}
-
-/* Sidebar Menu */
-.sidebar {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: var(--primary);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  transition: left 0.3s ease-in-out;
-  z-index: 1001;
-}
-
-.sidebar.show {
-  left: 0; /* Only appears when class "show" is added */
-}
-
-.sidebar .close-btn {
-  font-size: 28px;
-  margin-bottom: 1rem;
-  text-align: right;
-  cursor: pointer;
-}
-
-/* Desktop nav */
-.desktop-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.menu-toggle {
-  display: none;
-  background: transparent;
-  color: white;
-  font-size: 18px;
-  border: 2px solid white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Show sidebar toggle only on small screens */
-@media screen and (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .sidebar a {
-    margin: 10px 0;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
   }
 }
