@@ -1,47 +1,34 @@
-// 🌗 Toggle theme
+// Theme toggle
 function toggleTheme() {
-  const body = document.body;
-  const isDark = body.classList.toggle("dark-mode");
+  const isDark = document.body.classList.toggle("dark-mode");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// 📱 Toggle sidebar menu (mobile only)
+// Sidebar toggle
 function toggleSidebar() {
   const sidebar = document.getElementById("mobile-sidebar");
   sidebar.classList.toggle("show");
 }
 
-// Optional: For older layout
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("show");
-}
-
-// 🌍 Apply theme and header behavior on load
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
+// Auto-hide/show header on scroll
+let lastScroll = 0;
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("main-header");
+  const currentScroll = window.scrollY;
+  if (currentScroll > lastScroll) {
+    header.style.top = "-70px"; // Hide on scroll down
+  } else {
+    header.style.top = "0"; // Show on scroll up
   }
-
-  // 🔽 Auto-hide header on scroll down
-  let lastScroll = 0;
-  const header = document.querySelector("header");
-
-  window.addEventListener("scroll", () => {
-    let currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      header.style.top = "-80px";
-    } else {
-      header.style.top = "0";
-    }
-
-    if (currentScroll > 10) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-
-    lastScroll = currentScroll;
-  });
+  lastScroll = currentScroll;
 });
+
+// Load saved theme and close sidebar on page load
+window.onload = () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+
+  // Hide sidebar in every page on load
+  const sidebar = document.getElementById("mobile-sidebar");
+  if (sidebar) sidebar.classList.remove("show");
+};
