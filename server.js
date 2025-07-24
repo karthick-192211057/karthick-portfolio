@@ -1,70 +1,57 @@
-// Load environment variables
-require("dotenv").config();
-
 const express = require("express");
-const nodemailer = require("nodemailer");
-const { body, validationResult } = require("express-validator");
-
 const app = express();
+const path = require("path");
+require("dotenv").config(); // For using .env (e.g., email config)
+
 const PORT = process.env.PORT || 3000;
 
-// Set view engine and static folder
+// ✅ Serve static files from "public" folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// ✅ Set view engine to EJS
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+
+// ✅ Middleware to parse form data (for contact form)
 app.use(express.urlencoded({ extended: true }));
 
-// Routes for pages
+// ✅ Routes
 app.get("/", (req, res) => res.render("index"));
 app.get("/about", (req, res) => res.render("about"));
 app.get("/projects", (req, res) => res.render("projects"));
 app.get("/research", (req, res) => res.render("research"));
 app.get("/contact", (req, res) => res.render("contact"));
 
-// POST route for contact form
-app.post(
-  "/contact",
-  [
-    body("name").notEmpty().withMessage("Name is required"),
-    body("email").isEmail().withMessage("Enter a valid email"),
-    body("message").notEmpty().withMessage("Message is required")
-  ],
-  (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send("Validation failed. Please enter valid details.");
-    }
+// ✅ Optional: POST route for contact form (if using nodemailer)
+/*
+const nodemailer = require("nodemailer");
 
-    const { name, email, message } = req.body;
+app.post("/contact", async (req, res) => {
+  const { name, email, message } = req.body;
 
-    // Create Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,  // From .env
-        pass: process.env.EMAIL_PASS   // From .env (App Password)
-      }
-    });
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    // Mail options
-    const mailOptions = {
+  try {
+    await transporter.sendMail({
       from: email,
-      to: "karthicksaravanan0703@gmail.com", // Where you want to receive messages
-      subject: `Portfolio Message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    };
-
-    // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Mail send failed:", error);
-        return res.status(500).send("Message failed to send.");
-      }
-      res.send("✅ Message sent successfully!");
+      to: process.env.EMAIL_USER,
+      subject: `Portfolio Contact from ${name}`,
+      text: message,
     });
+    res.send("Message sent successfully!");
+  } catch (err) {
+    console.error(err);
+    res.send("Failed to send message.");
   }
-);
+});
+*/
 
-// Start server
+// ✅ Start the server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`✅ Server running on http://localhost:${PORT}`);
 });
