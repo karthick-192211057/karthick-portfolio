@@ -423,18 +423,19 @@ header.scrolled {
 /* Sidebar Navigation */
 .sidebar {
   position: fixed;
+  left: -250px; /* ✅ This hides it */
   top: 0;
-  left: -250px;
-  height: 100%;
   width: 250px;
+  height: 100%;
   background: var(--primary);
   color: white;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   transition: left 0.3s ease;
-  z-index: 1100;
+  z-index: 1001;
 }
+
 .sidebar.show {
   left: 0;
 }
