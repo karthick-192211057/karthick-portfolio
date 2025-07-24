@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Karthick S | Portfolio</title>
-
-  <!-- ✅ Correct path -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header>
+
+  <!-- 🟦 Header -->
+  <header id="main-header">
     <div class="logo">Karthick S</div>
-    <nav class="nav-bar">
+
+    <!-- 🔳 Desktop Links -->
+    <nav class="desktop-nav">
       <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/projects">Projects</a>
@@ -18,5 +21,20 @@
       <a href="/contact">Contact</a>
       <button class="toggle-btn" onclick="toggleTheme()">🌗</button>
     </nav>
+
+    <!-- 📱 Mobile Toggle Button -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
   </header>
+
+  <!-- 📱 Sidebar Menu (for mobile only) -->
+  <div class="sidebar" id="mobile-sidebar">
+    <div class="close-btn" onclick="toggleSidebar()">×</div>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/research">Research</a>
+    <a href="/contact">Contact</a>
+    <button class="toggle-btn" onclick="toggleTheme()">🌗 Toggle Theme</button>
+  </div>
+
   <main>
