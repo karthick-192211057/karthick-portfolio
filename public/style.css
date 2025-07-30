@@ -274,3 +274,14 @@ footer {
     font-size: 1rem;
   }
 }
+/* 👇 Hide menu toggle button by default (desktop) */
+#menu-toggle {
+  display: none;
+}
+
+/* 👇 Show menu toggle on mobile screens */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: inline-block;
+  }
+}
