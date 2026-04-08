@@ -62,6 +62,5 @@ app.post(
   }
 );
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
+// 👇 Export app for Vercel
+module.exports = app;
