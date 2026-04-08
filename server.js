@@ -62,5 +62,12 @@ app.post(
   }
 );
 
-// 👇 Export app for Vercel
+// 👇 Run server locally
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+// 👇 Export for Vercel
 module.exports = app;
